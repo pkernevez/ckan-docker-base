@@ -14,5 +14,5 @@ endif
 
 push: ## Push a CKAN 2.10.0 image to the DockerHub registry, `make push`
 ifeq ($(CKAN_VERSION),$(filter $(CKAN_VERSION),ckan-2.10.0))
-	docker push $(TAG_NAME)
+	docker buildx build --platform  linux/amd64,linux/arm64 --push . -t $(TAG_NAME)
 endif
